@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Öztemel — Software architecture consultancy, Amsterdam</title>
+<meta name="description" content="Öztemel is a software architecture consultancy in Amsterdam. Design, implementation, review, and modernisation of distributed systems.">
+<link rel="canonical" href="https://oztemel.nl/">
+
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Öztemel — Software architecture consultancy">
+<meta property="og:description" content="Design, implementation, review, and modernisation of distributed systems. Amsterdam.">
+<meta property="og:url" content="https://oztemel.nl/">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --ink:   #000000;
+    --paper: #ffffff;
+    --muted: #666666;
+    --rule:  #d8d8d8;
+
+    --measure: 34rem;
+    --pad: clamp(1.5rem, 6vw, 6rem);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html { -webkit-text-size-adjust: 100%; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Newsreader", Georgia, "Times New Roman", serif;
+    font-weight: 400;
+    font-size: 1.125rem;
+    line-height: 1.65;
+    font-variant-numeric: oldstyle-num;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    max-width: 68rem;
+    margin: 0 auto;
+    padding: clamp(4rem, 14vh, 9rem) var(--pad) clamp(3rem, 8vh, 5rem);
+  }
+
+  /* ---------- opening ---------- */
+
+  .name {
+    font-size: clamp(3.25rem, 14vw, 8.5rem);
+    font-weight: 400;
+    line-height: 0.92;
+    letter-spacing: -0.035em;
+    margin: 0;
+  }
+
+  .lead {
+    max-width: 32rem;
+    margin: clamp(2rem, 5vw, 3rem) 0 0;
+    font-size: clamp(1.3rem, 2.4vw, 1.75rem);
+    line-height: 1.42;
+    font-weight: 300;
+    letter-spacing: -0.011em;
+    text-wrap: balance;
+  }
+
+  .opening {
+    padding-bottom: clamp(4rem, 12vh, 8rem);
+  }
+
+  /* ---------- sections ---------- */
+
+  .band {
+    display: grid;
+    grid-template-columns: 9rem minmax(0, 1fr);
+    gap: 3rem;
+    padding: clamp(2.5rem, 6vw, 4rem) 0;
+    border-top: 1px solid var(--rule);
+  }
+
+  .band-name {
+    margin: 0;
+    font-size: 0.9375rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--muted);
+    letter-spacing: 0.01em;
+  }
+
+  .band-body {
+    max-width: var(--measure);
+  }
+
+  .band-body > :first-child { margin-top: 0; }
+  .band-body > :last-child  { margin-bottom: 0; }
+
+  /* ---------- services ---------- */
+
+  .service {
+    margin: 0 0 2.25rem;
+  }
+
+  .service:last-child { margin-bottom: 0; }
+
+  .service h2 {
+    margin: 0 0 0.35rem;
+    font-size: 1.25rem;
+    font-weight: 500;
+    line-height: 1.35;
+    letter-spacing: -0.008em;
+  }
+
+  .service p {
+    margin: 0;
+    color: #1a1a1a;
+  }
+
+  /* ---------- stages ---------- */
+
+  .stages {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    counter-reset: stage;
+  }
+
+  .stage {
+    display: grid;
+    grid-template-columns: 2rem minmax(0, 1fr);
+    gap: 0 1rem;
+    padding: 1.35rem 0;
+    border-top: 1px solid var(--rule);
+    counter-increment: stage;
+  }
+
+  .stages .stage:first-child {
+    padding-top: 0;
+    border-top: 0;
+  }
+
+  .stages .stage:last-child { padding-bottom: 0; }
+
+  .stage::before {
+    content: counter(stage);
+    color: var(--muted);
+    font-size: 1.0625rem;
+    line-height: 1.4;
+  }
+
+  .stage h2 {
+    margin: 0 0 0.3rem;
+    font-size: 1.1875rem;
+    font-weight: 500;
+    line-height: 1.4;
+    letter-spacing: -0.006em;
+  }
+
+  .stage p {
+    margin: 0;
+    font-size: 1.0625rem;
+    line-height: 1.55;
+    color: #1a1a1a;
+  }
+
+  /* ---------- domains ---------- */
+
+  .domains {
+    margin: 1.75rem 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .domains li {
+    padding: 1rem 0;
+    border-top: 1px solid var(--rule);
+  }
+
+  .domains li:last-child { padding-bottom: 0; }
+
+  .domains b {
+    display: block;
+    margin-bottom: 0.15rem;
+    font-weight: 500;
+    letter-spacing: -0.005em;
+  }
+
+  .domains p {
+    margin: 0;
+    font-size: 1.0625rem;
+    line-height: 1.55;
+    color: #1a1a1a;
+  }
+
+  /* ---------- contact ---------- */
+
+  a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid var(--ink);
+    padding-bottom: 0.05em;
+    transition: border-color 120ms ease, color 120ms ease;
+  }
+
+  a:hover {
+    color: var(--muted);
+    border-color: var(--muted);
+  }
+
+  a:focus-visible {
+    outline: 2px solid var(--ink);
+    outline-offset: 3px;
+    border-color: transparent;
+  }
+
+  /* ---------- foot ---------- */
+
+  .foot {
+    padding-top: clamp(2.5rem, 6vw, 4rem);
+    border-top: 1px solid var(--rule);
+    font-size: 0.9375rem;
+    color: var(--muted);
+  }
+
+  .foot p { margin: 0; }
+
+  .foot-mark {
+    display: block;
+    height: 30px;
+    width: auto;
+    color: var(--ink);
+    margin-bottom: 1.1rem;
+  }
+
+  /* ---------- narrow ---------- */
+
+  @media (max-width: 46rem) {
+    .band {
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    a { transition: none; }
+  }
+</style>
+</head>
+
+<body>
+<main class="page">
+
+  <header class="opening">
+    <h1 class="name">Öztemel</h1>
+    <p class="lead">
+      A software architecture practice in Amsterdam. Design, implementation,
+      and review of distributed systems.
+    </p>
+  </header>
+
+  <section class="band">
+    <h2 class="band-name">Services</h2>
+    <div class="band-body">
+
+      <div class="service">
+        <h2>Architecture and design</h2>
+        <p>
+          Deciding how a system should be shaped before it is built: service
+          boundaries, data flow, failure modes, and the non-functional
+          requirements that determine whether a platform holds under load.
+        </p>
+      </div>
+
+      <div class="service">
+        <h2>Implementation</h2>
+        <p>
+          Hands-on work alongside your engineers — services, event pipelines,
+          APIs, and the infrastructure around them. The design and the code
+          come from the same place.
+        </p>
+      </div>
+
+      <div class="service">
+        <h2>Code and architecture review</h2>
+        <p>
+          Reading a codebase or a design and saying plainly what will break,
+          what will slow the team down, and what to fix first. Delivered as a
+          written assessment your team can act on.
+        </p>
+      </div>
+
+      <div class="service">
+        <h2>Modernisation</h2>
+        <p>
+          Moving legacy platforms onto something maintainable without stopping
+          the business running on top of them.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="band">
+    <h2 class="band-name">How we work</h2>
+    <div class="band-body">
+      <p>
+        Most engagements move through four stages. Each one ends with something
+        you can hold on to, and you decide whether to continue.
+      </p>
+
+      <ol class="stages">
+        <li class="stage">
+          <div>
+            <h2>Discovery</h2>
+            <p>
+              Reading the system, the code, and how the team works around them.
+              This ends with a written picture of where things stand and what is
+              genuinely at risk — separated from what merely looks untidy.
+            </p>
+          </div>
+        </li>
+        <li class="stage">
+          <div>
+            <h2>Strategy and roadmap</h2>
+            <p>
+              Turning that assessment into a sequence: what to change, in what
+              order, and what each step buys you. Weighed against the delivery
+              commitments you already have.
+            </p>
+          </div>
+        </li>
+        <li class="stage">
+          <div>
+            <h2>Building</h2>
+            <p>
+              Implementing the plan alongside your engineers, adjusting it as
+              the system tells us more. Working software at every step rather
+              than a long silence before a large release.
+            </p>
+          </div>
+        </li>
+        <li class="stage">
+          <div>
+            <h2>Handover and support</h2>
+            <p>
+              Documentation, walkthroughs, and time set aside for your team to
+              take full ownership. Continued support afterwards if you want it,
+              but never as a dependency you are stuck with.
+            </p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="band">
+    <h2 class="band-name">Experience</h2>
+    <div class="band-body">
+      <p>
+        Twenty years of engineering, most of it on systems that carry money,
+        messages, or traffic at scale — and much of it spent replacing such
+        systems while they stayed in service.
+      </p>
+
+      <ul class="domains">
+        <li>
+          <b>Banking and payments</b>
+          <p>
+            Reactive authorisation and payment services, API modernisation, and
+            untangling microservices whose boundaries had blurred.
+          </p>
+        </li>
+        <li>
+          <b>Telecommunications</b>
+          <p>
+            Carrier-grade messaging platforms, geo-redundant deployments, and
+            the security, auditing, and recovery layers beneath a billing
+            product.
+          </p>
+        </li>
+        <li>
+          <b>Insurance</b>
+          <p>
+            Event-sourced policy lifecycle services and telemetry pipelines
+            feeding pricing in real time.
+          </p>
+        </li>
+        <li>
+          <b>E-commerce</b>
+          <p>
+            Search, recommendation, and event processing for large product
+            catalogues, and the platform behind AI-driven product discovery.
+          </p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="band">
+    <h2 class="band-name">Contact</h2>
+    <div class="band-body">
+      <p>
+        Available for architecture reviews, short engagements, and longer
+        consultancy across the Netherlands and remotely.
+      </p>
+      <p><a href="mailto:hello@oztemel.nl">hello@oztemel.nl</a></p>
+    </div>
+  </section>
+
+  <!--
+    Dutch business sites normally show KvK and BTW numbers.
+    Add them to the line below once registered, e.g.:
+    Öztemel · Amsterdam, the Netherlands · KvK 12345678 · BTW NL001234567B01
+  -->
+  <footer class="foot">
+    <svg class="foot-mark" viewBox="0 0 108 128" role="img" aria-label="Öztemel" xmlns="http://www.w3.org/2000/svg">
+      <g transform="translate(54,64)">
+        <path fill="currentColor" fill-rule="evenodd" d="M-54,0 a54,64 0 1,0 108,0 a54,64 0 1,0 -108,0 Z M-37.17,7.90 A38,57 -12 1,0 37.17,-7.90 A38,57 -12 1,0 -37.17,7.90 Z"/>
+        <ellipse cx="-18" cy="0" rx="10" ry="17" fill="currentColor" transform="rotate(-12 -18 0)"/>
+        <ellipse cx="18" cy="0" rx="10" ry="17" fill="#D42B12" transform="rotate(-12 18 0)"/>
+      </g>
+    </svg>
+    <p>Öztemel — Amsterdam, the Netherlands</p>
+  </footer>
+
+</main>
+</body>
+</html>
