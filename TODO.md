@@ -67,8 +67,10 @@ henüz yok).
     }
   }
   ```
-  Not: LinkedIn URL'i ve founder adı doldurulmalı (bkz. index.html'deki
-  `href="#"` LinkedIn linki ve About bölümündeki boş paragraf).
+  Not: LinkedIn URL'i artık dolu (`https://www.linkedin.com/in/tayfunoztemel`,
+  `sameAs` alanında kullanılabilir); founder adı ("Tayfun Öztemel") de biliniyor.
+  E-posta henüz yok — `email` alanını hello@oztemel.nl aktif olana kadar
+  eklemeyin.
 
 ## Meta etiketler
 
@@ -131,7 +133,11 @@ henüz yok).
 
 ## E-posta bağlantısı
 
-  ✅ Kontrol edildi, sorun yok: `mailto:hello@oztemel.nl` doğru biçimde.
+  hello@oztemel.nl henüz aktif değil, bu yüzden mailto linki Contact
+  bölümünden kaldırıldı (2026-09-09). E-posta hazır olunca:
+- [ ] **12. mailto linkini Contact bölümüne geri ekle**
+  `hello@oztemel.nl` aktif olduğunda `<p><a href="mailto:hello@oztemel.nl">hello@oztemel.nl</a></p>`
+  satırını LinkedIn linkinden önce tekrar ekleyin.
 
 ---
 
@@ -150,8 +156,12 @@ henüz yok).
 
 Bunlar TODO değil ama tamamlanmamış içerik olarak `index.html` içinde işaretli:
 - `#manifesto` alt bölümünün içeriği (`<!-- Manifesto — to be written -->`)
-- LinkedIn profil URL'i (`href="#"`, Contact bölümünde)
 
 ~~About bölümündeki kişisel paragraf~~ — tamamlandı: bölüm başlığı
 "Tayfun Öztemel" oldu, paragraf eklendi (bilinçli olarak birinci tekil, sitenin
 geri kalanındaki şirket sesinden ayrı).
+
+~~LinkedIn profil URL'i~~ — tamamlandı: `https://www.linkedin.com/in/tayfunoztemel`.
+
+~~Manifesto linki~~ — geçici olarak kaldırıldı (2026-09-09), içerik yazılınca
+`.opening` içine geri eklenecek (bkz. madde altında not yok, sadece hatırlatma).
